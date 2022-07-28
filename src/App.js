@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Header from "./component/Header";
+import TodoList from "./component/TodoList";
 
 function App() {
+  const [todo, setTodo] = useState([
+    { name: "Learn react", mark: false, id: 1 },
+    { name: "javascript", mark: false, id: 2 },
+  ]);
+
+  const markText = (index) => {
+    
+  };
+
+  const deleteState = (index) => {
+    const finishDelete = todo.filter((el) => {
+      return el.id !== index + 1;
+    });
+    setTodo(finishDelete);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <TodoList todos={todo} deleteState={deleteState} markText={markText} />
     </div>
   );
 }

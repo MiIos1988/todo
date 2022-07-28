@@ -1,0 +1,38 @@
+.container {
+  margin: 10px;
+  display: flex;
+}
+.form {
+  width: 250px;
+  border: 1px solid silver;
+  border-collapse: collapse;
+  margin: 5px;
+}
+.title > h2 {
+  margin: 0px 0;
+}
+.content {
+  text-align: center;
+}
+.title {
+  padding: 15px;
+  background-color: silver;
+  text-align: center;
+}
+.btn {
+  padding: 15px;
+  background-color: silver;
+  display: flex;
+  justify-content: space-between;
+}
+.btn > button {
+  padding: 7px;
+  color: white;
+  border: none;
+}
+.delBtn {
+  background-color: brown;
+}
+.markBtn {
+  background-color: blue;
+}
