@@ -6,19 +6,14 @@ import TodoList from "./component/TodoList";
 function App() {
   const [todo, setTodo] = useState([]);
 
-  // useEffect(() => {
-  //   const data = localStorage.getItem("todo");
-  //   if (data) {
-  //     setTodo(JSON.parse(data));
-  //   }
-  // }, []);
-
   useEffect(() => {
-    localStorage.setItem("todo", JSON.stringify(todo));
-  }, [todo]);
-  useEffect(() => {
-    console.log(localStorage.getItem("todo"));
-  }, [todo]);
+    let element = [];
+    if (localStorage.element) {
+      element = JSON.parse(localStorage.data);
+      console.log(element);
+      setTodo(element);
+    }
+  }, []);
 
   const markText = (index) => {
     todo[index].mark = !todo[index].mark;
@@ -33,6 +28,7 @@ function App() {
   };
   const newInput = (newState) => {
     const newTodo = { name: newState, mark: false, id: todo.length + 1 };
+    localStorage.element = JSON.stringify([...todo, newTodo]);
     setTodo([...todo, newTodo]);
   };
 
