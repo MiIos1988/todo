@@ -6,17 +6,25 @@ import TodoList from "./component/TodoList";
 function App() {
   const [todo, setTodo] = useState([]);
 
+  const [name, setName] = useState(() => {
+    // getting stored value
+    const saved = localStorage.getItem("name");
+    const initialValue = JSON.parse(saved);
+    return initialValue || "";
+  });
+
   useEffect(() => {
-    let element = [];
-    if (localStorage.element) {
-      element = JSON.parse(localStorage.data);
-      console.log(element);
-      setTodo(element);
+    let data = [];
+    if (localStorage.data) {
+      data = JSON.parse(localStorage.data);
+      console.log(data);
+      setTodo(data);
     }
   }, []);
 
   const markText = (index) => {
     todo[index].mark = !todo[index].mark;
+    localStorage.data = JSON.stringify([...todo]);
     setTodo([...todo]);
   };
 
@@ -24,11 +32,12 @@ function App() {
     const finishDelete = todo.filter((el) => {
       return el.id !== index + 1;
     });
+    localStorage.data = JSON.stringify(finishDelete);
     setTodo(finishDelete);
   };
   const newInput = (newState) => {
     const newTodo = { name: newState, mark: false, id: todo.length + 1 };
-    localStorage.element = JSON.stringify([...todo, newTodo]);
+    localStorage.data = JSON.stringify([...todo, newTodo]);
     setTodo([...todo, newTodo]);
   };
 
