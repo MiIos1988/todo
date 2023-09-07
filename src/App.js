@@ -7,7 +7,6 @@ function App() {
   const [todo, setTodo] = useState([]);
 
   const [name, setName] = useState(() => {
-    // getting stored value
     const saved = localStorage.getItem("name");
     const initialValue = JSON.parse(saved);
     return initialValue || "";
@@ -45,7 +44,7 @@ function App() {
     <div>
       <Header />
       <Input newInput={newInput} />
-      <TodoList todos={todo} deleteState={deleteState} markText={markText} />
+      <TodoList todo={todoAll} deleteState={deleteState} markText={markText} />
     </div>
   );
 }

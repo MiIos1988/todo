@@ -1,8 +1,8 @@
 import React from "react";
 import Todo from "./Todo";
 
-function TodoList({ todos, deleteState, markText }) {
-  const listTodo = todos.map((todo, index) => {
+function TodoList({ todoAll, deleteState, markText }) {
+  const listTodo = todoAll.map((todo, index) => {
     return (
       <Todo
         todo={todo}
